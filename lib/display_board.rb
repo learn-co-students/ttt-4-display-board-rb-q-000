@@ -1,74 +1,10 @@
 # Define display_board that accepts a board and prints
 # out the current state.
 def display_board(board)
-  board = [" "," "," "," "," "," "," "," "," "]
-  puts "   |   |   "
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
-  puts "   |   |   "
+  puts " #{board[3]} | #{board[4]} | #{board[5]} "
   puts "-----------"
-  puts "   |   |   "
-
-  board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
-  puts "   |   |   "
-  puts "-----------"
-  puts "   | X |   "
-  puts "-----------"
-  puts "   |   |   "
-
-  board = ["O", " ", " ", " ", " ", " ", " ", " ", " "]
-  puts " O |   |   "
-  puts "-----------"
-  puts "   |   |   "
-  puts "-----------"
-  puts "   |   |   "
-
-  board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
-  puts " X | X | X "
-  puts "-----------"
-  puts "   |   |   "
-  puts "-----------"
-  puts "   |   |   "
-
-  board = [" ", " ", " ", " ", " ", " ", "O", "O", "O"]
-  puts "   |   |   "
-  puts "-----------"
-  puts "   |   |   "
-  puts "-----------"
-  puts " O | O | O "
-
-  board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
-  puts " X |   |   "
-  puts "-----------"
-  puts "   | X |   "
-  puts "-----------"
-  puts "   |   | X "
-
-  board = [" ", " ", "O", " ", "O", " ", "O", " ", " "]
-  puts "   |   | O "
-  puts "-----------"
-  puts "   | O |   "
-  puts "-----------"
-  puts " O |   |   "
-
-  board = ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
-  puts " X | X | X "
-  puts "-----------"
-  puts " X | O | O "
-  puts "-----------"
-  puts " X | O | O "
-
-  board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
-  puts " X | O | X "
-  puts "-----------"
-  puts " O | X | X "
-  puts "-----------"
-  puts " O | X | O "
-
-  board = ["0", "0", "0", "0", "0", "0", "0", "0", "0"]
-  puts " 0 | 0 | 0 "
-  puts "-----------"
-  puts " 0 | 0 | 0 "
-  puts "-----------"
-  puts " 0 | 0 | 0 "
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
 
 end
