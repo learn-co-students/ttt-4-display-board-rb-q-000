@@ -135,20 +135,11 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # Can you copy the syntax of the tests above to write a test for a board
       # entirely filled with Xs?"
-      board = ["X", "X", "X", "X", "X", "X", "X", "X", "X"]
-
-      output = capture_puts{ display_board(board) }
-
-      expect(output).to include(" X | X | X ")
-      expect(output).to include("-----------")
-      expect(output).to include(" X | X | X ")
-      expect(output).to include("-----------")
-      expect(output).to include(" X | X | X ")
-    end
+      
 
       # Define the board with values that should create the desired output
       # *** Edit the line below ***
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "] # This is not correct
+      board = ["X", "X", "X", "X", "X", "X", "X", "X", "X"] # This is not correct
 
       # Don't touch the following line.
       output = capture_puts{ display_board(board) } if defined?(display_board)
@@ -167,14 +158,14 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # *** Edit the lines below ***
       # *** Uncomment the lines below ***
-      # expect(output).to include("   |   |   ")
-      # expect(output).to include("-----------")
-      # expect(output).to include("   |   |   ")
-      # expect(output).to include("-----------")
-      # expect(output).to include("   |   |   ")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
+      #expect(true).to be(true)
     end
 
     it 'prints an entire board full of Os' do
@@ -185,9 +176,17 @@ describe "#display_board in 'lib/display_board.rb" do
       # and make a few simple edits to convert the previous example to this
       # example's situation.
       # Don't forget to comment out the line that begins with `skip`.
+      board = ["0", "0", "0", "0", "0", "0", "0", "0", "0"]
+      output = capture_puts{ display_board(board) } if defined?(display_board)
+      expect(output).to include(" 0 | 0 | 0 ")
+      expect(output).to include("-----------")
+      expect(output).to include(" 0 | 0 | 0 ")
+      expect(output).to include("-----------")
+      expect(output).to include(" 0 | 0 | 0 ")
+
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
+      #expect(true).to be(true)
     end
   end
 end

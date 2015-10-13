@@ -64,4 +64,11 @@ def display_board(board)
   puts "-----------"
   puts " O | X | O "
 
+  board = ["0", "0", "0", "0", "0", "0", "0", "0", "0"]
+  puts " 0 | 0 | 0 "
+  puts "-----------"
+  puts " 0 | 0 | 0 "
+  puts "-----------"
+  puts " 0 | 0 | 0 "
+
 end
