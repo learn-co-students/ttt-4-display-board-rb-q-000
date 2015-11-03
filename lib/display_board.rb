@@ -9,13 +9,7 @@ def display_board(board)
 end
 
 def print_board_row(row_data)
-  row_string = ""
-  row_data.each do |val|
-    row_string += " " + val + " "
-    row_string += "|"
-  end
-  row_string = row_string[0...-1]
-  puts row_string
+  puts " #{row_data[0]} | #{row_data[1]} | #{row_data[2]} "
 end
 
 def print_separator_row
