@@ -1,9 +1,11 @@
 def display_board(board)
-puts "#{0}|#{1}|#{2}"
+puts " #{board[0]} | #{board[1]} | #{board[2]} "
 puts "-----------"
-puts "#{3}|#{4}|#{5}"
+puts " #{board[3]} | #{board[4]} | #{board[5]} "
 puts "-----------"
-puts "#{6}|#{7}|#{8}"
+puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-display_board (6 = "X", 7 = "X", 8 = "X")
+board =["O", "X", "", "", "X", "", "", "", "X"]
+
+display_board(board)
