@@ -8,11 +8,11 @@ def display_board(board)
   middle_row=" #{board[3]} | #{board[4]} | #{board[5]} "
   bottom_row=" #{board[6]} | #{board[7]} | #{board[8]} "
 
-print top_row
-print dashes
-print middle_row
-print dashes
-print bottom_row
+puts top_row
+puts dashes
+puts middle_row
+puts dashes
+puts bottom_row
 end
 board = [" "," "," "," "," "," "," "," "," "]
 display_board(board)
