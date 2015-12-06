@@ -127,15 +127,19 @@ describe "#display_board in 'lib/display_board.rb" do
     end
 
     it 'prints an entire board full of Xs' do
-      # Should you want to write your own test for this situation,
-      # read the following code and comments.
+      board = ["X", "X", "X", "X", "X", "X", "X", "X", "X"]
 
-      # Can you copy the syntax of the tests above to write a test for a board
-      # entirely filled with Xs?"
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+    end
 
       # Define the board with values that should create the desired output
       # *** Edit the line below ***
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "] # This is not correct
+       it 'prints a blank board when the board array is empty' do
+      board = [" "," "," "," "," "," "," "," "," "]
 
       # Don't touch the following line.
       output = capture_puts{ display_board(board) } if defined?(display_board)
