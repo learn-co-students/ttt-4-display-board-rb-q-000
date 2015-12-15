@@ -171,9 +171,18 @@ describe "#display_board in 'lib/display_board.rb" do
       # Hint: You should be able to copy the code in the previous it example
       # and make a few simple edits to convert the previous example to this
       # example's situation.
+      board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"] # This is not correct
 
+      # Don't touch the following line.
+      output = capture_puts{ display_board(board) } if defined?(display_board)
+
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
+#       expect(true).to be(true)
     end
   end
 end
