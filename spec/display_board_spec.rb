@@ -57,7 +57,9 @@ describe "#display_board in 'lib/display_board.rb" do
 
     it 'prints a board with X winning via the top row' do
       board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
-
+      board[0] = "X"
+      board[1] = "X"
+      board[2] = "X"
       output = capture_puts{ display_board(board) }
 
       expect(output).to include(" X | X | X ")
@@ -69,6 +71,9 @@ describe "#display_board in 'lib/display_board.rb" do
 
     it 'prints a board with O winning via the bottom row' do
       board = [" ", " ", " ", " ", " ", " ", "O", "O", "O"]
+      board[6] = "O"
+      board[7] = "O"
+      board[8] = "O"
 
       output = capture_puts{ display_board(board) }
 
@@ -135,7 +140,16 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # Define the board with values that should create the desired output
       # *** Edit the line below ***
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "] # This is not correct
+      board = ["X", "X", "X", "X", "X", "X", "X", "X", "X"] # This is correct
+      board[0] = "X"
+      board[1] = "X"
+      board[2] = "X"
+      board[3] = "X"
+      board[4] = "X"
+      board[5] = "X"
+      board[6] = "X"
+      board[7] = "X"
+      board[8] = "X"
 
       # Don't touch the following line.
       output = capture_puts{ display_board(board) } if defined?(display_board)
@@ -154,26 +168,41 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # *** Edit the lines below ***
       # *** Uncomment the lines below ***
-      # expect(output).to include("   |   |   ")
-      # expect(output).to include("-----------")
-      # expect(output).to include("   |   |   ")
-      # expect(output).to include("-----------")
-      # expect(output).to include("   |   |   ")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
+      # expect(true).to be(true)
     end
 
     it 'prints an entire board full of Os' do
       # Can you copy the syntax of the tests above to write a test for a board
       # entirely filled with Os?
 
-      # Hint: You should be able to copy the code in the previous it example
-      # and make a few simple edits to convert the previous example to this
-      # example's situation.
+      board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"] # This is correct
+      board[0] = "O"
+      board[1] = "O"
+      board[2] = "O"
+      board[3] = "O"
+      board[4] = "O"
+      board[5] = "O"
+      board[6] = "O"
+      board[7] = "O"
+      board[8] = "O"
+
+      output = capture_puts{ display_board(board) } if defined?(display_board)
+
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
+      # expect(true).to be(true)
     end
   end
 end
