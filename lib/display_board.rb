@@ -10,8 +10,5 @@ def display_board(board)
   puts "-----------"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 
-#I also think I accidentally did something to the spec file (had split screen and started typing when the cursor was in the wrong window.)
-
-#board[5] = "X"
 
 end
