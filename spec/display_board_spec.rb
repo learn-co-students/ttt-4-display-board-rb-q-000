@@ -154,11 +154,16 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # *** Edit the lines below ***
       # *** Uncomment the lines below ***
-      # expect(output).to include("   |   |   ")
-      # expect(output).to include("-----------")
-      # expect(output).to include("   |   |   ")
-      # expect(output).to include("-----------")
-      # expect(output).to include("   |   |   ")
+
+      board = ["X","X","X","X","X","X","X","X","X"]
+
+      output = capture_puts{ display_board(board) }
+
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
 
       # *** Comment the line below by adding a # at the line start ***
       expect(true).to be(true)
@@ -168,12 +173,21 @@ describe "#display_board in 'lib/display_board.rb" do
       # Can you copy the syntax of the tests above to write a test for a board
       # entirely filled with Os?
 
+      board = ["O","O","O","O","O","O","O","O","O"]
+
+      output = capture_puts{ display_board(board) }
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+
       # Hint: You should be able to copy the code in the previous it example
       # and make a few simple edits to convert the previous example to this
       # example's situation.
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
+      # expect(true).to be(true)
     end
   end
 end
