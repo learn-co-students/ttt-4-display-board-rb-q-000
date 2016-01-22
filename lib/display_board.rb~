@@ -6,6 +6,7 @@ class TicTacToe
   end
 
   def is_empty?
+    @matrix.values == empty_board
   end
 
   def empty_board
@@ -13,11 +14,11 @@ class TicTacToe
   end
 
   def print_board
-    print row1
-    print horizontal_ruler
-    print row2
-    print horizontal_ruler
-    print row3
+    row1
+    horizontal_ruler
+    row2
+    horizontal_ruler
+    row3
   end
 
   def horizontal_ruler
@@ -42,4 +43,6 @@ def display_board(board)
   ttt = TicTacToe.new(board)
   ttt.print_board
 end
+
+
 
