@@ -5,9 +5,6 @@ class TicTacToe
     @matrix = Hash[board.each_with_index.map { |v, i| [i,' ' + v + ' '] }]
   end
 
-  def is_empty?
-  end
-
   def empty_board
     Array.new(9, " ")
   end
