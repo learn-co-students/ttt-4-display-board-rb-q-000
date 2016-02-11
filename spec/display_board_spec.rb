@@ -127,6 +127,16 @@ describe "#display_board in 'lib/display_board.rb" do
     end
 
     it 'prints an entire board full of Xs' do
+      board = ["X", "X", "X", "X", "X", "X", "X", "X", "X"]
+
+      output = capture_puts{ display_board(board) }
+
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+    end
       # Should you want to write your own test for this situation,
       # read the following code and comments.
 
@@ -161,10 +171,20 @@ describe "#display_board in 'lib/display_board.rb" do
       # expect(output).to include("   |   |   ")
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
-    end
+      #expect(true).to be(true)
+    #end
 
     it 'prints an entire board full of Os' do
+      board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]
+
+      output = capture_puts{ display_board(board) }
+
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+    end
       # Can you copy the syntax of the tests above to write a test for a board
       # entirely filled with Os?
 
@@ -173,7 +193,7 @@ describe "#display_board in 'lib/display_board.rb" do
       # example's situation.
 
       # *** Comment the line below by adding a # at the line start ***
-      expect(true).to be(true)
-    end
+      #expect(true).to be(true)
+    #end
   end
 end
