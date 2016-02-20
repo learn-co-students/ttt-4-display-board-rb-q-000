@@ -1,6 +1,6 @@
 require_relative"../lib/display_board.rb"
 
-describe "#display_board in 'lib/display_board.rb" do
+describe "display_board in 'lib/display_board.rb" do
   context 'various game situations' do
     it 'prints a blank board when the board array is empty' do
       board = [" "," "," "," "," "," "," "," "," "]
@@ -135,8 +135,15 @@ describe "#display_board in 'lib/display_board.rb" do
 
       # Define the board with values that should create the desired output
       # *** Edit the line below ***
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "] # This is not correct
+      board = ["X", "X", "X", "X", "X", "X", "X", "X", "X"] # This is not correct
 
+      output = capture_puts{ display_board(board) }
+
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
+      expect(output).to include("-----------")
+      expect(output).to include(" X | X | X ")
       # Don't touch the following line.
       output = capture_puts{ display_board(board) } if defined?(display_board)
 
@@ -167,7 +174,15 @@ describe "#display_board in 'lib/display_board.rb" do
     it 'prints an entire board full of Os' do
       # Can you copy the syntax of the tests above to write a test for a board
       # entirely filled with Os?
+      board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]
 
+      output = capture_puts{ display_board(board) }
+
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
+      expect(output).to include("-----------")
+      expect(output).to include(" O | O | O ")
       # Hint: You should be able to copy the code in the previous it example
       # and make a few simple edits to convert the previous example to this
       # example's situation.
