@@ -1,4 +1,4 @@
-board = ["X","0"," "," "," "," "," "," "," "]
+board = [" "," "," "," "," "," "," "," "," "]
 def display_board(board)
   output_line1 = " #{board[0]} " + "|" + " #{board[1]} " + "|" + " #{board[2]} "
   output_line2 = "-----------"
