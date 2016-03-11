@@ -2,13 +2,12 @@
 # out the current state.
 board = ["X","X","O","X","O","X","O","O","X"]
 
-def display_board(quadro)
-  puts " #{quadro[0]} | #{quadro[1]} | #{quadro[2]} "
+def display_board(board)
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
-  puts " #{quadro[3]} | #{quadro[4]} | #{quadro[5]} "
+  puts " #{board[3]} | #{quadro[4]} | #{board[5]} "
   puts "-----------"
-  puts " #{quadro[6]} | #{quadro[7]} | #{quadro[8]} "
-
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
 display_board(board)
