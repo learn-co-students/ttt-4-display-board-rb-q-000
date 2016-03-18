@@ -7,5 +7,5 @@ def display_board(board_array)
   puts "-----------"
   puts " #{board_array[6]} | #{board_array[7]} | #{board_array[8]} "
 end
-# board = [" ", " ", " ", "X", "O", " ", " ", " ", " "]
+# board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 # display_board(board)
