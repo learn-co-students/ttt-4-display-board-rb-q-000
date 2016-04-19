@@ -8,6 +8,5 @@ def display_board(board = [" "," "," "," "," "," "," "," "," "])
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-row = ["X","O","X"]
 
-display_board(row)
+
