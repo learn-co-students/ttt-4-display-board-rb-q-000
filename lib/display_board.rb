@@ -9,8 +9,3 @@ puts [" #{board[0]} ""|"" #{board[1]} ""|"" #{board[2]} ""\n""-----------""\n"" 
 end
 
 display_board(board)
-
-# board = [" "," "," "," "," "," "," "," "," "]
-
-# puts " "
-# display_board(board)
