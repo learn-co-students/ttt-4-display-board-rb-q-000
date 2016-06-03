@@ -147,7 +147,7 @@ describe "#display_board in 'lib/display_board.rb" do
       # *** Edit the line below ***
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "] # This is not correct
 
-      # Don't touch the following line.
+      # Copy the syntax of the test above to complete this part of the test.
       output = capture_puts{ display_board(board) } if defined?(display_board)
 
       # Each line that starts with expect represents a row in the ouput.
