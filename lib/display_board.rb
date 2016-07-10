@@ -1,7 +1,8 @@
 # Define display_board that accepts a board and prints
 # out the current state.
+rows = ["   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   "]
+
 def display_board(rows)
-  rows = ["   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   "]
   puts "#{rows[0]}|#{rows[1]}|#{rows[2]}"
   puts "-----------"
   puts "#{rows[3]}|#{rows[4]}|#{rows[5]}"
@@ -10,4 +11,4 @@ def display_board(rows)
 end
 
 
-print display_board(board)
+print display_board(rows)
