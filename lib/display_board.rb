@@ -14,4 +14,8 @@ def display_board(xo)
   puts line3
 end
 
-display_board(board)
+#display_board(board)
+display_board(["X","O","X","O","O","X","O","X","X"])
+
+#Why does both ways work
+#if they are both fine which way is the better one to use?
