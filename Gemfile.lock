@@ -33,3 +33,6 @@ DEPENDENCIES
   rake
   require_all
   rspec
+
+BUNDLED WITH
+   1.12.5
