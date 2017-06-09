@@ -1,0 +1,559 @@
+lib/display_board.rb:# Define display_board that accepts a board and prints
+lib/display_board.rb:# out the current state.
+lib/display_board.rb:# Ugh this was the long bad way. Next time remember string interpolation format and retrieve array at bottom.
+lib/display_board.rb:board = [" ", " ", " ", " ", " "," ", " ", " ", " "]
+lib/display_board.rb:def display_board(board)
+lib/display_board.rb:  puts "#{board}"
+lib/display_board.rb:  print " O |   |   "
+lib/display_board.rb:  print "-----------"
+lib/display_board.rb:  print "   | X |   "
+lib/display_board.rb:  print "-----------"
+lib/display_board.rb:  print "   |   |   "
+lib/display_board.rb:  print " X | X | X "
+lib/display_board.rb:  print " O | O | O "
+lib/display_board.rb:  print "   |   | O "
+lib/display_board.rb:  print "   | O |   "
+lib/display_board.rb:  print " X |   |   "
+lib/display_board.rb:  print "   |   | X "
+lib/display_board.rb:  print " X | O | X "
+lib/display_board.rb:  print " X | O | O "
+lib/display_board.rb:  print " O | X | X "
+lib/display_board.rb:  print " O | X | O "
+lib/display_board.rb:  end
+lib/display_board.rb:
+lib/display_board.rb:#def display_board(board)
+lib/display_board.rb:#  puts " #{board[0]} | #{board[1]} | #{board[2]} "
+lib/display_board.rb:#  puts "-----------"
+lib/display_board.rb:#  puts " #{board[3]} | #{board[4]} | #{board[5]} "
+lib/display_board.rb:#  puts "-----------"
+lib/display_board.rb:# puts " #{board[6]} | #{board[7]} | #{board[8]} "
+lib/display_board.rb:#end
+spec/spec_helper.rb:def capture_puts
+spec/spec_helper.rb:  begin
+spec/spec_helper.rb:    old_stdout = $stdout
+spec/spec_helper.rb:    $stdout = StringIO.new('','w')
+spec/spec_helper.rb:    yield
+spec/spec_helper.rb:    $stdout.string
+spec/spec_helper.rb:  ensure
+spec/spec_helper.rb:    $stdout = old_stdout
+spec/spec_helper.rb:  end
+spec/spec_helper.rb:end
+spec/spec_helper.rb:
+spec/spec_helper.rb:RSpec.configure do |config|
+spec/spec_helper.rb:  config.order = :default
+spec/spec_helper.rb:end
+spec/display_board_spec.rb:require_relative"../lib/display_board.rb"
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:describe "#display_board in 'lib/display_board.rb" do
+spec/display_board_spec.rb:  context 'various game situations' do
+spec/display_board_spec.rb:    it 'prints a blank board when the board array is empty' do
+spec/display_board_spec.rb:      board = [" "," "," "," "," "," "," "," "," "]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with an X in the center position' do
+spec/display_board_spec.rb:      board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   | X |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with O in the top left' do
+spec/display_board_spec.rb:      board = ["O", " ", " ", " ", " ", " ", " ", " ", " "]
+spec/display_board_spec.rb:      # Leave hint for assigning the 0 index value of O
+spec/display_board_spec.rb:      board[0] = "O"
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include(" O |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with an X in the center and an O in the top left' do
+spec/display_board_spec.rb:      board = ["O", " ", " ", " ", "X", " ", " ", " ", " "]
+spec/display_board_spec.rb:      board[0] = "O"
+spec/display_board_spec.rb:      board[4] = "X"
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include(" O |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   | X |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with X winning via the top row' do
+spec/display_board_spec.rb:      board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include(" X | X | X ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with O winning via the bottom row' do
+spec/display_board_spec.rb:      board = [" ", " ", " ", " ", " ", " ", "O", "O", "O"]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include(" O | O | O ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with X winning in a top left to bottom right diagonal' do
+spec/display_board_spec.rb:      board = ["X", " ", " ", " ", "X", " ", " ", " ", "X"]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include(" X |   |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   | X |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   |   | X ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints a board with O winning in a top right to bottom left diagonal' do
+spec/display_board_spec.rb:      board = [" ", " ", "O", " ", "O", " ", "O", " ", " "]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include("   |   | O ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include("   | O |   ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include(" O |   |   ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints arbitrary arrangements of the board' do
+spec/display_board_spec.rb:      board = ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include(" X | X | X ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include(" X | O | O ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include(" X | O | O ")
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) }
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      expect(output).to include(" X | O | X ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include(" O | X | X ")
+spec/display_board_spec.rb:      expect(output).to include("-----------")
+spec/display_board_spec.rb:      expect(output).to include(" O | X | O ")
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints an entire board full of Xs' do
+spec/display_board_spec.rb:      # Should you want to write your own test for this situation,
+spec/display_board_spec.rb:      # read the following code and comments.
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # Can you copy the syntax of the tests above to write a test for a board
+spec/display_board_spec.rb:      # entirely filled with Xs?"
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # Define the board with values that should create the desired output
+spec/display_board_spec.rb:      # *** Edit the line below ***
+spec/display_board_spec.rb:      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "] # This is not correct
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # Don't touch the following line.
+spec/display_board_spec.rb:      output = capture_puts{ display_board(board) } if defined?(display_board)
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # Each line that starts with expect represents a row in the ouput.
+spec/display_board_spec.rb:      # The desired characters a row must include are provided by the String
+spec/display_board_spec.rb:      # of the row. EX: The top row filled with X would be " X | X | X "
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # You would code that expectation with:
+spec/display_board_spec.rb:      # expect(output).to include(" X | X | X ")
+spec/display_board_spec.rb:      # meaning you expect the entire output to at least include a matching row.
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # Uncomment the following lines of code by removing the # at line start.
+spec/display_board_spec.rb:      # Then edit the following lines to represent a board entirely filled with X.
+spec/display_board_spec.rb:      # Remember, every space and every character is important.
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # *** Edit the lines below ***
+spec/display_board_spec.rb:      # *** Uncomment the lines below ***
+spec/display_board_spec.rb:      # expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      # expect(output).to include("-----------")
+spec/display_board_spec.rb:      # expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:      # expect(output).to include("-----------")
+spec/display_board_spec.rb:      # expect(output).to include("   |   |   ")
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # *** Comment the line below by adding a # at the line start ***
+spec/display_board_spec.rb:      expect(true).to be(true)
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:    it 'prints an entire board full of Os' do
+spec/display_board_spec.rb:      # Can you copy the syntax of the tests above to write a test for a board
+spec/display_board_spec.rb:      # entirely filled with Os?
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # Hint: You should be able to copy the code in the previous it example
+spec/display_board_spec.rb:      # and make a few simple edits to convert the previous example to this
+spec/display_board_spec.rb:      # example's situation.
+spec/display_board_spec.rb:
+spec/display_board_spec.rb:      # *** Comment the line below by adding a # at the line start ***
+spec/display_board_spec.rb:      expect(true).to be(true)
+spec/display_board_spec.rb:    end
+spec/display_board_spec.rb:  end
+spec/display_board_spec.rb:end
+spec/display_board_spec.rb:
+Gemfile.lock:GEM
+Gemfile.lock:  remote: https://rubygems.org/
+Gemfile.lock:  specs:
+Gemfile.lock:    coderay (1.1.0)
+Gemfile.lock:    diff-lcs (1.2.5)
+Gemfile.lock:    method_source (0.8.2)
+Gemfile.lock:    pry (0.10.1)
+Gemfile.lock:      coderay (~> 1.1.0)
+Gemfile.lock:      method_source (~> 0.8.1)
+Gemfile.lock:      slop (~> 3.4)
+Gemfile.lock:    rake (10.4.2)
+Gemfile.lock:    require_all (1.3.2)
+Gemfile.lock:    rspec (3.3.0)
+Gemfile.lock:      rspec-core (~> 3.3.0)
+Gemfile.lock:      rspec-expectations (~> 3.3.0)
+Gemfile.lock:      rspec-mocks (~> 3.3.0)
+Gemfile.lock:    rspec-core (3.3.2)
+Gemfile.lock:      rspec-support (~> 3.3.0)
+Gemfile.lock:    rspec-expectations (3.3.1)
+Gemfile.lock:      diff-lcs (>= 1.2.0, < 2.0)
+Gemfile.lock:      rspec-support (~> 3.3.0)
+Gemfile.lock:    rspec-mocks (3.3.2)
+Gemfile.lock:      diff-lcs (>= 1.2.0, < 2.0)
+Gemfile.lock:      rspec-support (~> 3.3.0)
+Gemfile.lock:    rspec-support (3.3.0)
+Gemfile.lock:    slop (3.6.0)
+Gemfile.lock:
+Gemfile.lock:PLATFORMS
+Gemfile.lock:  ruby
+Gemfile.lock:
+Gemfile.lock:DEPENDENCIES
+Gemfile.lock:  pry
+Gemfile.lock:  rake
+Gemfile.lock:  require_all
+Gemfile.lock:  rspec
+Gemfile.lock:
+README.md:# Displaying a Tic Tac Toe Board
+README.md:
+README.md:## Overview
+README.md:
+README.md:A tic tac toe board can be represented by an array of 9 string elements containing the state of that cell in the board.
+README.md:
+README.md:An empty board would be:
+README.md:```ruby
+README.md:board = [" "," "," "," "," "," "," "," "," "]
+README.md:```
+README.md:Representing:
+README.md:```
+README.md:   |   |   
+README.md:-----------
+README.md:   |   |   
+README.md:-----------
+README.md:   |   |   
+README.md:```
+README.md:
+README.md:A board with an "X" in the middle:
+README.md:```ruby
+README.md:board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
+README.md:```
+README.md:Representing:
+README.md:```
+README.md:   |   |   
+README.md:-----------
+README.md:   | X |   
+README.md:-----------
+README.md:   |   |   
+README.md:```
+README.md:
+README.md:
+README.md:A board with X winning via filling the top row:
+README.md:```ruby
+README.md:board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
+README.md:```
+README.md:Representing:
+README.md:```
+README.md: X | X | X
+README.md:-----------
+README.md:   |   |   
+README.md:-----------
+README.md:   |   |   
+README.md:```
+README.md:
+README.md:A random board after 5 turns:
+README.md:```ruby
+README.md:board = ["O", "X", " ", " ", "X", " ", "X", "O", " "]
+README.md:```
+README.md:Representing:
+README.md:```
+README.md: O | X |   
+README.md:-----------
+README.md:   | X |   
+README.md:-----------
+README.md: X | O |   
+README.md:```   
+README.md:
+README.md:A board entirely filled with "O":
+README.md:```ruby
+README.md:board = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]
+README.md:```
+README.md:Representing:
+README.md:```
+README.md: O | O | O
+README.md:-----------
+README.md: O | O | O
+README.md:-----------
+README.md: O | O | O
+README.md:```   
+README.md:
+README.md:Etc...
+README.md:
+README.md:Our goal is to build a method `display_board` that accepts a board array as an argument and uses the data in that array to correctly print out an accurate representation of the Tic Tac Toe board from the player's perspective based on the data in the array.
+README.md:
+README.md:For example, given a correctly defined `display_board`:
+README.md:
+README.md:```ruby
+README.md:board = ["O", "X", " ", " ", "X", " ", "X", "O", " "]
+README.md:display_board(board)
+README.md:```
+README.md:
+README.md:Should print:
+README.md:```
+README.md: O | X |   
+README.md:-----------
+README.md:   | X |   
+README.md:-----------
+README.md: X | O |   
+README.md:```
+README.md:
+README.md:The board follows the following format:
+README.md:
+README.md:1. When the board is displayed there are three characters per cell. An empty cell is <code>"&nbsp;&nbsp;&nbsp;"</code> and a filled cell is `" X "`
+README.md:2. Three cells per a row.
+README.md:3. The middle cell in a row is bordered by 2 `|` (pipes): ` O | X |   `
+README.md:4. Three rows on the board.
+README.md:5. Rows are separated by: `-----------`
+README.md:
+README.md:## Objectives
+README.md:
+README.md:1. Define a method that accepts an argument.
+README.md:2. Use the argument within the method.
+README.md:3. Read data from an array.
+README.md:4. Print out a multi-line dynamic string using Interpolation
+README.md:
+README.md:## Instructions
+README.md:
+README.md:1. Define your `display_board` method in `lib/display_board.rb`
+README.md:2. Get the test suite passing by running `learn`
+README.md:3. Submit your solution.
+README.md:
+README.md:## Hint: The `learn --fail-fast` test flag
+README.md:
+README.md:To ensure that your `display_board` method honestly works as expected, we had to write a lot of tests to flex the different situations that might occur. When you run `learn`, you're going to see lots of failing tests that are all basically failing for the same reason - `display_board` isn't behaving as desired. It might be easier to deal with one test failure at a time and scrolling through the output of 12 failures isn't helpful.
+README.md:
+README.md:You can limit your test run to stop at the first failure it encounters so that you only see 1 failure and can easily focus on it. By focusing on a single failure, you can quickly change your method based on that failure and re-run the test suite and see if the change solved that single failure. Although this lengthens the command each time, you can instantly redo your last entered command by tapping the Up arrow on your keyboard so you don't have to type the whole thing each time.
+README.md:
+README.md:It's helpful, for example:
+README.md:
+README.md:```
+README.md:[23:19:40] (master) ttt-4-display_board
+README.md:// ♥ learn
+README.md:
+README.md:#display_board in 'lib/display_board.rb
+README.md:  accepts a board as an argument
+README.md:  various game situations
+README.md:    prints a blank board when the board array is empty (FAILED - 1)
+README.md:    prints a board with an X in the center position (FAILED - 2)
+README.md:    prints a board with O in the top left (FAILED - 3)
+README.md:    prints a board with an X in the center and an O in the top left (FAILED - 4)
+README.md:    prints a board with X winning via the top row (FAILED - 5)
+README.md:    prints a board with O winning via the bottom row (FAILED - 6)
+README.md:    prints a board with X winning in a top left to bottom right diagonal (FAILED - 7)
+README.md:    prints a board with O winning in a top right to bottom left diagonal (FAILED - 8)
+README.md:    prints arbitrary arrangements of the board (FAILED - 9)
+README.md:    prints an entire board full of Xs (PENDING: Can you copy the syntax of the tests above to write a test for a board entirely filled with Xs?)
+README.md:    prints an entire board full of Os (PENDING: Can you copy the syntax of the tests above to write a test for a board entirely filled with Os?)
+README.md:
+README.md:Pending: (Failures listed here are expected and do not affect your suite's status)
+README.md:
+README.md:  1) #display_board in 'lib/display_board.rb various game situations prints an entire board full of Xs
+README.md:     # Can you copy the syntax of the tests above to write a test for a board entirely filled with Xs?
+README.md:     # ./spec/display_board_spec.rb:132
+README.md:
+README.md:  2) #display_board in 'lib/display_board.rb various game situations prints an entire board full of Os
+README.md:     # Can you copy the syntax of the tests above to write a test for a board entirely filled with Os?
+README.md:     # ./spec/display_board_spec.rb:164
+README.md:
+README.md:
+README.md:Failures:
+README.md:
+README.md:  1) #display_board in 'lib/display_board.rb various game situations prints a blank board when the board array is empty
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30dcba8>
+README.md:     # ./spec/display_board_spec.rb:11:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:11:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  2) #display_board in 'lib/display_board.rb various game situations prints a board with an X in the center position
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30d75b8>
+README.md:     # ./spec/display_board_spec.rb:23:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:23:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  3) #display_board in 'lib/display_board.rb various game situations prints a board with O in the top left
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30d5830>
+README.md:     # ./spec/display_board_spec.rb:38:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:38:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  4) #display_board in 'lib/display_board.rb various game situations prints a board with an X in the center and an O in the top left
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30d74a0>
+README.md:     # ./spec/display_board_spec.rb:52:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:52:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  5) #display_board in 'lib/display_board.rb various game situations prints a board with X winning via the top row
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30ce8a0>
+README.md:     # ./spec/display_board_spec.rb:64:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:64:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  6) #display_board in 'lib/display_board.rb various game situations prints a board with O winning via the bottom row
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30ccd20>
+README.md:     # ./spec/display_board_spec.rb:76:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:76:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  7) #display_board in 'lib/display_board.rb various game situations prints a board with X winning in a top left to bottom right diagonal
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30c7780>
+README.md:     # ./spec/display_board_spec.rb:88:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:88:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  8) #display_board in 'lib/display_board.rb various game situations prints a board with O winning in a top right to bottom left diagonal
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30c5c00>
+README.md:     # ./spec/display_board_spec.rb:100:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:100:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:  9) #display_board in 'lib/display_board.rb various game situations prints arbitrary arrangements of the board
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007fede30c43a0>
+README.md:     # ./spec/display_board_spec.rb:112:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:112:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:Finished in 0.00296 seconds (files took 0.08249 seconds to load)
+README.md:12 examples, 9 failures, 2 pending
+README.md:
+README.md:Failed examples:
+README.md:
+README.md:rspec ./spec/display_board_spec.rb:8 # #display_board in 'lib/display_board.rb various game situations prints a blank board when the board array is empty
+README.md:rspec ./spec/display_board_spec.rb:20 # #display_board in 'lib/display_board.rb various game situations prints a board with an X in the center position
+README.md:rspec ./spec/display_board_spec.rb:33 # #display_board in 'lib/display_board.rb various game situations prints a board with O in the top left
+README.md:rspec ./spec/display_board_spec.rb:47 # #display_board in 'lib/display_board.rb various game situations prints a board with an X in the center and an O in the top left
+README.md:rspec ./spec/display_board_spec.rb:61 # #display_board in 'lib/display_board.rb various game situations prints a board with X winning via the top row
+README.md:rspec ./spec/display_board_spec.rb:73 # #display_board in 'lib/display_board.rb various game situations prints a board with O winning via the bottom row
+README.md:rspec ./spec/display_board_spec.rb:85 # #display_board in 'lib/display_board.rb various game situations prints a board with X winning in a top left to bottom right diagonal
+README.md:rspec ./spec/display_board_spec.rb:97 # #display_board in 'lib/display_board.rb various game situations prints a board with O winning in a top right to bottom left diagonal
+README.md:rspec ./spec/display_board_spec.rb:109 # #display_board in 'lib/display_board.rb various game situations prints arbitrary arrangements of the board
+README.md:
+README.md:```
+README.md:
+README.md:VS:
+README.md:
+README.md:`learn --fail-fast`
+README.md:```
+README.md:[23:24:16] (master) ttt-4-display_board
+README.md:// ♥ learn --fail-fast
+README.md:
+README.md:#display_board in 'lib/display_board.rb
+README.md:  accepts a board as an argument
+README.md:  various game situations
+README.md:    prints a blank board when the board array is empty (FAILED - 1)
+README.md:
+README.md:Failures:
+README.md:
+README.md:  1) #display_board in 'lib/display_board.rb various game situations prints a blank board when the board array is empty
+README.md:     Failure/Error: output = capture_puts{ display_board(board) }
+README.md:     NoMethodError:
+README.md:       undefined method `display_board' for #<RSpec::ExampleGroups::DisplayBoardInLibDisplayBoardRb::VariousGameSituations:0x007f9d04a6b9d8>
+README.md:     # ./spec/display_board_spec.rb:11:in `block (4 levels) in <top (required)>'
+README.md:     # ./spec/spec_helper.rb:5:in `capture_puts'
+README.md:     # ./spec/display_board_spec.rb:11:in `block (3 levels) in <top (required)>'
+README.md:
+README.md:Finished in 0.00126 seconds (files took 0.1164 seconds to load)
+README.md:2 examples, 1 failure
+README.md:
+README.md:Failed examples:
+README.md:
+README.md:rspec ./spec/display_board_spec.rb:8 # #display_board in 'lib/display_board.rb various game situations prints a blank board when the board array is empty
+README.md:
+README.md:```
+README.md:
+README.md:## Bonus: Write Your Own Tests!
+README.md:
+README.md:If you open `spec/display_board_spec.rb` in Sublime you'll see the test suite for this lesson. We left the last two tests pending. Read the instructions in the file and see if you can implement those tests.
+README.md:
+Rakefile:# This is just an example and should be removed from this lab.
+Rakefile:
+Rakefile:require 'pry'
+Rakefile:require 'require_all'
+Rakefile:
+Rakefile:task :console do
+Rakefile:  require_all "./config" if Dir.exists?("./config")
+Rakefile:  require_all "./app" if Dir.exists?("./app")
+Rakefile:  require_all "./lib" if Dir.exists?("./lib")
+Rakefile:  require_all "./*.rb" if Dir.entries(".").include?(/\.rb/)
+Rakefile:
+Rakefile:  Pry.start
+Rakefile:end
+Gemfile:# A sample Gemfile
+Gemfile:source "https://rubygems.org"
+Gemfile:
+Gemfile:# gem "rails"
+Gemfile:
+Gemfile:gem 'rspec'
+Gemfile:gem 'pry'
+Gemfile:gem 'rake'
+Gemfile:gem 'require_all'
